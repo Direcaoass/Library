@@ -15,17 +15,22 @@
     <h1>Library</h1>
   </header>
   <div class="buttonGrid"><button class="addBtn">add Book</button></div>
-  <div class="libraryGrid">grid livros</div>
+  <div class="libraryGrid"></div>
 
-  <div class="popUpGrid">
-    <div class="popUp">
-      <p>Name</p>
-      <p>Name</p>
-      <p>Name</p>
-      <p>Name</p>
-      <button>submit</button>
-    </div>
+  <div class="popUp">
+    <form action="">
+      <h2>Add a new book</h2>
+      <input type="text" class="name" placeholder="Book Name" maxlength="40" required>
+      <input type="text" class="author" placeholder="Author Name" maxlength="40" required>
+      <input type="number" class="pages" placeholder="Pages Qty " required>
+      <div class="read"><label for="read"> Have you read it? </label><input type="checkbox" class="readed" id="read">
+      </div>
+      <div class="buttons"><button class="submit">Submit</button>
+        <button class="cancel">Cancel</button>
+      </div>
+    </form>
   </div>
+
 
 
 </body>
