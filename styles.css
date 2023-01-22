@@ -92,17 +92,33 @@ header {
   
 }
 
-.readBtn{
+.unreadBtn{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(243, 227, 176);
+  background-color: burlywood;
   min-width: 70%;
   border-radius: 10%;
   font-weight: bold;
   height: 2rem;
+  cursor: pointer;
   
 }
+
+.readBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: green;
+  min-width: 70%;
+  border-radius: 10%;
+  font-weight: bold;
+  height: 2rem;
+  cursor: pointer;
+  
+}
+
+
 
 .removeBtn{
   display: flex;
@@ -113,4 +129,5 @@ header {
   border-radius: 10%;
   font-weight: bold;
   height: 2rem;
+  cursor: pointer;
 }
