@@ -3,7 +3,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  
 }
+
 
 header {
   width: 100vw;
@@ -25,21 +27,25 @@ header {
 .addBtn {
   background-color: gray;
   color: whitesmoke;
-  border: none;
-  border-radius: 10%;
   padding: 1rem;
-  position: relative;
-
+  
+  
 }
 
 .popUp {
-  display: none;
-  position: absolute;
-  width: fit-content;
-  height: fit-content;
-  margin-left: 30%;
   
-  z-index: 10;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease-in-out; 
+}
+
+.popUpActive{
+  transform: translate(-50%, -50%) scale(1); 
+  
+
 }
 
 .popUp form {
@@ -57,6 +63,7 @@ header {
   font-size: 1rem;
   border: none;
   padding: 0.3rem;
+  
 
 }
 
@@ -64,10 +71,9 @@ header {
 .submit,
 .cancel {
   background-color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 10%;
   font-weight: bold;
   padding: 1rem;
+  
 }
 
 .libraryGrid {
@@ -80,7 +86,7 @@ header {
 
 .book {
   display: flex;
-  flex-wrap: wrap;
+  overflow-wrap: anywhere;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -92,42 +98,45 @@ header {
   
 }
 
-.unreadBtn{
+
+.readBtn,.removeBtn{
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: burlywood;
   min-width: 70%;
-  border-radius: 10%;
   font-weight: bold;
   height: 2rem;
-  cursor: pointer;
-  
-}
-
-.readBtn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: green;
-  min-width: 70%;
-  border-radius: 10%;
-  font-weight: bold;
-  height: 2rem;
-  cursor: pointer;
-  
-}
-
-
+    
+  }
 
 .removeBtn{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: gray;
-  min-width: 70%;
+   background-color: gray;
+  
+}
+
+button{
+  cursor:pointer;
+  border: none;
   border-radius: 10%;
-  font-weight: bold;
-  height: 2rem;
-  cursor: pointer;
+}
+
+button:hover{
+  opacity: 80%;
+  transition: 0.2s ease-in-out;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  
+}
+
+.overlayActive {
+  display: block;
+   
 }
