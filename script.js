@@ -11,7 +11,7 @@ const bookAuthor = document.querySelector('.author');
 const bookPages = document.querySelector('.pages');
 const readCheck = document.querySelector('.readCheck');
 const submitBtn = document.querySelector('.submit');
-const canceltBtn = document.querySelector('.cancel');
+const cancelBtn = document.querySelector('.cancel');
 
 
 
@@ -115,7 +115,7 @@ addBtn.onclick = () => {
     overlayBack.classList.toggle('overlayActive')
 }
 
-canceltBtn.onclick = () => {
+cancelBtn.onclick = () => {
     popUpGrid.classList.toggle('popUpActive')
     overlayBack.classList.toggle('overlayActive')
 }
