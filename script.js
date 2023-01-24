@@ -1,4 +1,6 @@
 let myLibrary = [];
+let readStatus;
+let id = 0;
 
 const libraryGrid = document.querySelector('.libraryGrid');
 const addBtn = document.querySelector('.addBtn');
@@ -11,8 +13,7 @@ const bookPages = document.querySelector('.pages');
 const readCheck = document.querySelector('.readCheck');
 const submitBtn = document.querySelector('.submit');
 const canceltBtn = document.querySelector('.cancel');
-let readStatus;
-let id = 0;
+
 
 
 //functions
@@ -32,7 +33,7 @@ function addNewBook() {
             e.preventDefault();
             overlayBack.classList.toggle('overlayActive')
             popUpGrid.classList.toggle('popUpActive')
-            readCheck.checked ? readStatus = true : readStatus = false;
+            readStatus = readCheck.checked ? true : false;
             id++;
             const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus, id)
             myLibrary.push(newBook);
@@ -48,7 +49,7 @@ function clearAddBookField() {
     bookAuthor.value = '';
     bookPages.value = '';
     readCheck.checked = false;
-    
+
 
 }
 
@@ -77,45 +78,28 @@ function createBook(title, author, pages, readStatus, id) {
     readElem.classList.add('readBtn');
 
     setInitialReadStatus(readStatus, readElem);
-    elementEvents(id, bookElem, readElem, readStatus)
+    elementEvents(id, bookElem, readElem)
 }
 
-function elementEvents(id, bookElem, readElem, readStatus) {
+function elementEvents(id, bookElem, readElem) {
 
     bookElem.querySelector('.removeBtn').onclick = () => removeBook(id, bookElem);
-    readElem.onclick = () => toggleReadStatus(id, readElem, readStatus)
+    readElem.onclick = () => toggleReadStatus(id, readElem)
 
 }
 
 function setInitialReadStatus(readStatus, readElem) {
-    if (!readStatus) {
-        readElem.innerText = 'unread';
-        readElem.style.backgroundColor = 'burlywood'
-
-    }
-    else {
-        readElem.innerText = 'read';
-        readElem.style.backgroundColor = 'green'
-    }
+    readElem.innerText = readStatus ? 'read' : 'unread';
+    readElem.classList.add(readStatus? 'read' : 'unread');
 }
 
-function toggleReadStatus(id, readElem, readStatus) {
-    if (readStatus) {
-        readStatus = !readStatus;
-        readElem.innerText = 'unread';
-        readElem.style.backgroundColor = 'burlywood';
-        myLibrary.forEach(book => {
-            (book.id === id) ? book.read = false : alert('book not found')
-        })
-    }
-    else {
-        readElem.innerText = 'read';
-        readStatus = !readStatus;
-        readElem.style.backgroundColor = 'green';
-        myLibrary.forEach(book => {
-            (book.id === id) ? book.read = true : alert('book not found')
-        })
-    }
+function toggleReadStatus(id, readElem) {
+
+    const book = myLibrary.find(b => b.id === id);
+    book.read = !book.read;
+    readElem.innerText = book.read ? 'read' : 'unread';
+    readElem.classList.toggle('unread', !book.read);
+    readElem.classList.toggle('read', book.read);
 }
 
 function removeBook(id, element) {

@@ -140,3 +140,11 @@ button:hover{
   display: block;
    
 }
+
+.read {
+  background-color: green;
+}
+
+.unread {
+  background-color: burlywood;
+}
