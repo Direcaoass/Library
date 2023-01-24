@@ -1,5 +1,4 @@
 let myLibrary = [];
-let readStatus;
 let id = 0;
 
 const libraryGrid = document.querySelector('.libraryGrid');
@@ -33,7 +32,7 @@ function addNewBook() {
             e.preventDefault();
             overlayBack.classList.toggle('overlayActive')
             popUpGrid.classList.toggle('popUpActive')
-            readStatus = readCheck.checked ? true : false;
+            const readStatus = readCheck.checked ? true : false;
             id++;
             const newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, readStatus, id)
             myLibrary.push(newBook);
@@ -90,7 +89,7 @@ function elementEvents(id, bookElem, readElem) {
 
 function setInitialReadStatus(readStatus, readElem) {
     readElem.innerText = readStatus ? 'read' : 'unread';
-    readElem.classList.add(readStatus? 'read' : 'unread');
+    readElem.classList.add(readStatus ? 'read' : 'unread');
 }
 
 function toggleReadStatus(id, readElem) {
@@ -100,6 +99,7 @@ function toggleReadStatus(id, readElem) {
     readElem.innerText = book.read ? 'read' : 'unread';
     readElem.classList.toggle('unread', !book.read);
     readElem.classList.toggle('read', book.read);
+
 }
 
 function removeBook(id, element) {
